@@ -1,0 +1,16 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: h2lc
+  datasource:
+    url: jdbc:postgresql://localhost:5432/h2lcdb
+    username: h2lcuser
+    password: h2lcpass
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
