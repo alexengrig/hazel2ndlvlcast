@@ -8,3 +8,17 @@ services:
       POSTGRES_PASSWORD: h2lcpass
     ports:
       - 5432:5432
+
+  hazelcast:
+    container_name: hazelcast
+    image: hazelcast/hazelcast:4.0.1
+    ports:
+      - 5701:5701
+
+  management-center:
+    container_name: hazelcast-management-center
+    image: hazelcast/management-center:4.0.3
+    environment:
+      - MC_INIT_CMD=./mc-conf.sh cluster add -H=/data -ma hazelcast:5701 -cn dev
+    ports:
+      - 8080:8080
